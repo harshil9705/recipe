@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <form action="/recipe/all" method="post">
+        <div id="parent"></div>
+    </form>
+</body>
+<script>
+     let output = (data)=>{
+        data.map((ele)=>{
+            // let image = document.createElement('img')
+            // image.src=ele.imageUrl
+            
+            let name = document.createElement('h1')
+            name.innerHTML=ele.name
+            
+            let div = document.createElement('div')
+            div.append(name)
+
+            document.getElementById('parent').append(div)
+        })
+     }
+    fetch('http://localhost:8090/recipe/all')
+    .then((ele) => ele.json())
+    .then((data) => output(data))
+</script>
+</html>
